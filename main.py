@@ -7,17 +7,7 @@ init()
 def about():
     utils.clear()
 
-    print(Fore.YELLOW +
-          "███████╗ ██████╗██╗███╗   ██╗████████╗██╗██╗     ██╗     ███████╗")
-    print("██╔════╝██╔════╝██║████╗  ██║╚══██╔══╝██║██║     ██║     ██╔════╝")
-    print("███████╗██║     ██║██╔██╗ ██║   ██║   ██║██║     ██║     █████╗  ")
-    print("╚════██║██║     ██║██║╚██╗██║   ██║   ██║██║     ██║     ██╔══╝  ")
-    print("███████║╚██████╗██║██║ ╚████║   ██║   ██║███████╗███████╗███████╗")
-    print("╚══════╝ ╚═════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚══════╝╚══════╝╚══════╝" +
-          Fore.RED + "                             Version : 1.0\n\n")
-
-    print(Fore.GREEN + "[-]" + Fore.CYAN +
-          " Creato da : Scintille Web Agency\n")
+    utils.header()
 
     print(Fore.GREEN + "Autore      " + Fore.RED +
           ":   " + Fore.YELLOW + "Scintille Web Agency")
@@ -27,21 +17,19 @@ def about():
     print(Fore.RED + "[" + Fore.RESET + "00" + Fore.RED + "]" + " Indietro          " +
           Fore.RED + "[" + Fore.RESET + "99" + Fore.RED + "]" + " Esci\n")
 
+    option = input(Fore.RED + "[" + Fore.RESET + "-" + Fore.RED + "]" +
+                   Fore.GREEN + " Seleziona una opzione: " + Fore.CYAN)
+
+    if option == "00":
+        start()
+    elif option == "99":
+        exit()
+
 
 def start():
     utils.clear()
 
-    print(Fore.YELLOW +
-          "███████╗ ██████╗██╗███╗   ██╗████████╗██╗██╗     ██╗     ███████╗")
-    print("██╔════╝██╔════╝██║████╗  ██║╚══██╔══╝██║██║     ██║     ██╔════╝")
-    print("███████╗██║     ██║██╔██╗ ██║   ██║   ██║██║     ██║     █████╗  ")
-    print("╚════██║██║     ██║██║╚██╗██║   ██║   ██║██║     ██║     ██╔══╝  ")
-    print("███████║╚██████╗██║██║ ╚████║   ██║   ██║███████╗███████╗███████╗")
-    print("╚══════╝ ╚═════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚══════╝╚══════╝╚══════╝" +
-          Fore.RED + "                             Version : 1.0\n\n")
-
-    print(Fore.GREEN + "[-]" + Fore.CYAN +
-          " Creato da : Scintille Web Agency\n")
+    utils.header()
 
     print(Fore.RED + "[" + Fore.RESET + "::" + Fore.RED + "]" + Fore.YELLOW +
           " Seleziona uno dei tool di controllo qui sotto " + Fore.RED + "[" + Fore.RESET + "::" + Fore.RED + "]\n")
@@ -55,8 +43,10 @@ def start():
     option = input(Fore.RED + "[" + Fore.RESET + "-" + Fore.RED + "]" +
                    Fore.GREEN + " Seleziona una opzione: " + Fore.CYAN)
 
-    if option == 99:
+    if option == "99":
         about()
+    elif option == "00":
+        exit()
 
 
 start()
