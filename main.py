@@ -1,7 +1,9 @@
 from colorama import init, Fore, Back, Style
 import utils
+import signal
 
 init()
+signal.signal(signal.SIGINT, utils.quit_handler)
 
 
 def about():
@@ -26,6 +28,26 @@ def about():
         exit()
 
 
+def disk_usage():
+    utils.clear()
+
+    utils.header()
+
+    total = utils.get_total()
+    used = utils.get_used()
+    free = utils.get_free()
+
+    print(Fore.RED + "[" + Fore.RESET + "-" +
+          Fore.RED + "]" + Fore.GREEN + " Ecco le informazioni sul tuo disco:\n")
+
+    print(Fore.RED + "[" + Fore.RESET + "-" +
+          Fore.RED + "]" + Fore.CYAN + " Spazio Totale: " + Fore.YELLOW + str(total))
+    print(Fore.RED + "[" + Fore.RESET + "-" +
+          Fore.RED + "]" + Fore.CYAN + " Spazio Utilizzato: " + Fore.YELLOW + str(used))
+    print(Fore.RED + "[" + Fore.RESET + "-" +
+          Fore.RED + "]" + Fore.CYAN + " Spazio Disponibile: " + Fore.YELLOW + str(free))
+
+
 def start():
     utils.clear()
 
@@ -47,6 +69,8 @@ def start():
         about()
     elif option == "00":
         exit()
+    elif option == "1":
+        disk_usage()
 
 
 start()
