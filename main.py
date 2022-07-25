@@ -1,12 +1,19 @@
 from colorama import init, Fore, Back, Style
 import utils
 import signal
+import sys
 
 init()
 signal.signal(signal.SIGINT, utils.quit_handler)
 
 
 def about():
+    """
+    ANCHOR: About
+    It prints out a header, then prints out some text, then prints out a menu with two options, then
+    waits for the user to enter a number, then if the user enters 00, it calls the start() function, and
+    if the user enters 99, it calls the exit() function
+    """
     utils.clear()
 
     utils.header()
@@ -29,6 +36,10 @@ def about():
 
 
 def disk_usage():
+    """
+    ANCHOR: Disk Usage
+    It prints out the total, used, and free disk space on the system
+    """
     utils.clear()
 
     utils.header()
@@ -45,10 +56,25 @@ def disk_usage():
     print(Fore.RED + "[" + Fore.RESET + "-" +
           Fore.RED + "]" + Fore.CYAN + " Spazio Utilizzato: " + Fore.YELLOW + str(used))
     print(Fore.RED + "[" + Fore.RESET + "-" +
-          Fore.RED + "]" + Fore.CYAN + " Spazio Disponibile: " + Fore.YELLOW + str(free))
+          Fore.RED + "]" + Fore.CYAN + " Spazio Disponibile: " + Fore.YELLOW + str(free) + "\n")
+
+    print(Fore.RED + "[" + Fore.RESET + "00" + Fore.RED + "]" + " Indietro          " +
+          Fore.RED + "[" + Fore.RESET + "99" + Fore.RED + "]" + " Esci\n")
+
+    option = input(Fore.RED + "[" + Fore.RESET + "-" + Fore.RED + "]" +
+                   Fore.GREEN + " Seleziona una opzione: " + Fore.CYAN)
+
+    if option == "00":
+        start()
+    elif option == "99":
+        exit()
 
 
 def start():
+    """
+    ANCHOR: Start
+    It prints a menu, asks the user to select an option, and then calls the appropriate function
+    """
     utils.clear()
 
     utils.header()
@@ -73,9 +99,9 @@ def start():
         disk_usage()
 
 
-start()
-
-# total = total // (2**30)
-
-# free = free // (2**30)
-# free = round(free / total * 100, 2)
+if len(sys.argv) == 1:
+    start()
+else:
+    if sys.argv[1] == "disk":
+        print(utils.get_total() + "\n" +
+              utils.get_used() + "\n" + utils.get_free())

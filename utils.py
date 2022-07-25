@@ -18,6 +18,7 @@ def quit_handler(sig, frame):
 
 def clear():
     """
+    ANCHOR: Clear
     If the operating system is Windows, clear the screen using the cls command, otherwise clear the
     screen using the clear command
     """
@@ -26,6 +27,7 @@ def clear():
 
 def header():
     """
+    ANCHOR: Header
     It prints a header
     """
     print(Fore.YELLOW +
@@ -52,11 +54,13 @@ def get_total():
 
 def get_used():
     total, used, free = shutil.disk_usage("/")
-    used = str(used // (2**30)) + " GB (" + str(round(used // (2**30) / total * 100, 2)) + "%)"
+    used = str(used // (2**30)) + " GB (" + \
+        str(round((100 * used // (2**30)) / (total // (2**30)), 2)) + "%)"
     return used
 
 
 def get_free():
     total, used, free = shutil.disk_usage("/")
-    free = str(free // (2**30)) + " GB (" + str(round(free // (2**30) / total * 100, 2)) + "%)"
+    free = str(free // (2**30)) + " GB (" + \
+        str(round((100 * free // (2**30)) / (total // (2**30)), 2)) + "%)"
     return free
